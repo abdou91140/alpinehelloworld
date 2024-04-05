@@ -12,6 +12,8 @@ pipeline {
 
     agent none
 
+    checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/abdou91140/alpinehelloworld.git']])
+    
     stages {
         stage('build'){
             steps{
