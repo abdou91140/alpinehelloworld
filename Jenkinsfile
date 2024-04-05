@@ -31,5 +31,13 @@ pipeline {
                  }
             }
         }
+        stage('deploiement') {
+            agent any
+            steps {
+                script {
+                    sh 'docker run -p 8088:5000 -e $PORT:5000 -d --name=$CONTAINER_NAME ${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}'
+                }
+            }
+        }
     }
 }
