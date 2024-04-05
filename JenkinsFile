@@ -11,11 +11,15 @@ pipeline {
     }
 
     agent none
-
-    checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/abdou91140/alpinehelloworld.git']])
     
     stages {
         stage('build'){
+            steps{
+                script{
+                    sh 'git clone https://github.com/abdou91140/alpinehelloworld.git'
+                    sh 'cd alpinehelloworld'
+                }
+            }
             steps{
                 script{
                     sh 'docker build -t ${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG} .'
