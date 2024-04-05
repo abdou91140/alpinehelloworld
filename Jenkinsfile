@@ -1,6 +1,6 @@
 pipeline {
 
-    environement {
+    environment {
         CONTAINER_NAME = "alpine"
     }
 
