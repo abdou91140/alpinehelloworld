@@ -13,6 +13,7 @@ pipeline {
 
     stages {
         stage('build') {
+            agent none
             steps {
                 script {
                     sh 'docker build -t ${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG} .'
